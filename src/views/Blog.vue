@@ -2,10 +2,12 @@
     <Titulo texto="Blog" />
     <ul>
         <li v-for="post in posts" :key="post.id">
-            {{ post.body}}
+            <router-link :to="`/blog/${post.id}`">
+                {{ post.body}}
+            </router-link>
         </li>
     </ul>
-    <button @click="consumirApi">Obtener datos</button>
+    <!-- <button @click="consumirApi">Obtener datos</button> -->
 </template>
 
 <script>
@@ -31,6 +33,9 @@ export default {
                 console.log(error)
             }
         }
+    },
+    created() {
+        this.consumirApi()
     }
 }
 </script>
