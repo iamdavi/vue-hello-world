@@ -1,5 +1,20 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <Titulo texto="About page" />
   </div>
 </template>
+
+<script>
+import Titulo  from "@/components/Titulo";
+
+export default {
+  name: "About",
+  components: {
+    Titulo
+  }
+}
+</script>
+
+<style>
+
+</style>

@@ -1,10 +1,15 @@
 <template>
-  <h1>Blog</h1>
+    <Titulo texto="Blog" />
 </template>
 
 <script>
+import Titulo from "../components/Titulo";
+
 export default {
-    name: "Blog"
+    name: "Blog",
+    components: {
+        Titulo
+    }
 }
 </script>
 
