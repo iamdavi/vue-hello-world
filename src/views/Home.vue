@@ -4,19 +4,32 @@
     <Titulo texto="Página de inicio" />
     <h2
       :style="colorContador"
-    >{{ titulo }} {{ contador }}</h2>
+    >
+      {{ titulo }} {{ contador }}
+    </h2>
+    <button @click="accionIncrementar">Aumentar</button>
+    <BtnDisminuir />
+
+    <hr>
+
+    <BtnAcciones :estado="true" />
+    <BtnAcciones :estado="false" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Titulo from '@/components/Titulo'
-import { mapState } from "vuex";
+import BtnDisminuir from '@/components/BtnDisminuir'
+import BtnAcciones from '@/components/BtnAcciones'
+import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
   name: 'Home',
   components: {
-    Titulo
+    Titulo,
+    BtnDisminuir,
+    BtnAcciones
   },
   data () {
     return {
@@ -28,6 +41,10 @@ export default {
     colorContador() {
       return this.contador > 50 ? {'color': 'green'} : {'color': 'red'}
     }
+  },
+  methods: {
+    ...mapMutations(['incrementar']),
+    ...mapActions(['accionIncrementar'])
   }
 }
 </script>
