@@ -2,7 +2,9 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <Titulo texto="Página de inicio" />
-    <h2>Contador global: {{ contador }}</h2>
+    <h2
+      :style="colorContador"
+    >{{ titulo }} {{ contador }}</h2>
   </div>
 </template>
 
@@ -16,8 +18,16 @@ export default {
   components: {
     Titulo
   },
+  data () {
+    return {
+      titulo: "Mi contador Vuex:"
+    }
+  },
   computed: {
-    ...mapState(['contador'])
+    ...mapState(['contador']),
+    colorContador() {
+      return this.contador > 50 ? {'color': 'green'} : {'color': 'red'}
+    }
   }
 }
 </script>
