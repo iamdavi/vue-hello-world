@@ -1,5 +1,10 @@
 <template>
     <Titulo texto="Blog" />
+    <ul>
+        <li v-for="post in posts" :key="post.id">
+            {{ post.body}}
+        </li>
+    </ul>
     <button @click="consumirApi">Obtener datos</button>
 </template>
 
@@ -21,7 +26,7 @@ export default {
             try {
                 const data = await fetch('https://jsonplaceholder.typicode.com/posts')
                 const array = await data.json()
-                console.log(array)
+                this.posts = array
             } catch (error) {
                 console.log(error)
             }
