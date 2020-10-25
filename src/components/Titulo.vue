@@ -11,6 +11,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    /* - Estilos que solo afectan a este componente - */
+    h1 {
+        color: peru;
+    }
 </style>
