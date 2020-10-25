@@ -8,9 +8,13 @@
             {{ index }} - {{ servicio }}
         </li>
     </ul>
+    <AccionSaldo texto="Aumentar saldo" />
+    <AccionSaldo texto="Disminuir texto" />
 </template>
 
 <script>
+import AccionSaldo from './AccionSaldo'
+
 export default {
     name: "Cuenta",
     data() {
@@ -19,6 +23,17 @@ export default {
             cuenta: "Visa",
             cuenta: true,
             servicios: ["giro", "abono", "transferencia"]
+        }
+    },
+    components: {
+        AccionSaldo
+    },
+    methods: {
+        aumentar() {
+            this.saldo += 100
+        },
+        disminuir() {
+            this.saldo -= 100
         }
     }
 }
