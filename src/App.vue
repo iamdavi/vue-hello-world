@@ -1,15 +1,18 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <Titulo texto="Mi banco [props]" />
+  <Cuenta />
 </template>
 
 <script>
-import Titulo from './components/Titulo.vue'
+import Titulo from './components/Titulo'
+import Cuenta from './components/Cuenta'
 
 export default {
   name: 'App',
   components: {
-    Titulo
+    Titulo,
+    Cuenta
   }
 }
 </script>
