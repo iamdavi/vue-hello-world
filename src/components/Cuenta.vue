@@ -15,7 +15,8 @@
         @accion="aumentar"
     />
     <AccionSaldo 
-        texto="Disminuir texto" 
+        texto="Disminuir saldo" 
+        :tieneSaldo="tieneSaldo"
         @accion="disminuir"
     />
 </template>
@@ -30,7 +31,8 @@ export default {
             saldo: 1000,
             cuenta: "Visa",
             cuenta: true,
-            servicios: ["giro", "abono", "transferencia"]
+            servicios: ["giro", "abono", "transferencia"],
+            tieneSaldo: true
         }
     },
     components: {
@@ -38,10 +40,22 @@ export default {
     },
     methods: {
         aumentar() {
+            this.tieneSaldo = true
             this.saldo += 100
         },
         disminuir() {
+            if (this.saldo === 0) {
+                this.tieneSaldo = false
+
+                alert('El saldo está a', this.tieneSaldo)
+                return
+            }
             this.saldo -= 100
+        }
+    },
+    computed: {
+        hasSaldo() {
+            return this.saldo > 0 ? true : false
         }
     }
 }

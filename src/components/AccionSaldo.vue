@@ -1,12 +1,16 @@
 <template>
-    <button @click="accion">{{ texto }}</button>
+    <button :disabled="!tieneSaldo" @click="accion">{{ texto }}</button>
 </template>
 
 <script>
 export default {
     name: "AccionSaldo",
     props: {
-        texto: String
+        texto: String,
+        tieneSaldo: {
+            type: Boolean,
+            default: true
+        }
     },
     methods: {
         accion() {
