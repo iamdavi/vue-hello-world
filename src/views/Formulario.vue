@@ -108,6 +108,12 @@ export default {
             if (this.tarea.nombre.trim() == '') {
                 return false
             }
+            this.tarea = {
+                nombre: '',
+                categorias: [],
+                estado: '',
+                numero: 0
+            }
             return true;
         }
     },
