@@ -2,17 +2,22 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <Titulo texto="Página de inicio" />
+    <h2>Contador global: {{ contador }}</h2>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Titulo from '@/components/Titulo'
+import { mapState } from "vuex";
 
 export default {
   name: 'Home',
   components: {
     Titulo
+  },
+  computed: {
+    ...mapState(['contador'])
   }
 }
 </script>
