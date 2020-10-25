@@ -8,8 +8,16 @@
             {{ index }} - {{ servicio }}
         </li>
     </ul>
-    <AccionSaldo texto="Aumentar saldo" />
-    <AccionSaldo texto="Disminuir texto" />
+    <!-- Dejamos que los componentes hijos accedan a metodos del componente padre
+    a través del @, el nombre que lo sigue puede ser el que queramos -->
+    <AccionSaldo 
+        texto="Aumentar saldo" 
+        @accion="aumentar"
+    />
+    <AccionSaldo 
+        texto="Disminuir texto" 
+        @accion="disminuir"
+    />
 </template>
 
 <script>
