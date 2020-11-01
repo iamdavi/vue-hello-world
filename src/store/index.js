@@ -2,7 +2,16 @@ import { createStore } from 'vuex'
 
 export default createStore({
     state: {
-        contador: 100
+        contador: 100,
+        // TAREAS
+        tareas: [], // array que contiene todas las tareas
+        tarea: { // Objeto Tarea
+            id: '',
+            nombre: '',
+            categorias: [],
+            estado: '',
+            numero: 0
+        }
     },
     mutations: {
         incrementar(state, payload) {
@@ -10,6 +19,17 @@ export default createStore({
         },
         disminuir(state, payload) {
             state.contador -= payload
+        },
+        // TAREAS
+        set(state, payload) {
+            state.tareas.push(payload)
+        },
+        get(state) {
+            return state.tareas
+        },
+        eliminar(state, payload) {
+            // Filtramos las tareas que tengan un ID distinto del pasado en la vista
+            state.tareas = state.tareas.filter(item => item.id !== payload)
         }
     },
     actions: {
@@ -26,6 +46,15 @@ export default createStore({
             } else {
                 commit('disminuir', objeto.numero)
             }
+        },
+        setTareas({ commit }, tarea) {
+            commit('set', tarea)
+        },
+        getTareas({ commit }) {
+            commit('get')
+        },
+        deleteTarea({ commit }, id) {
+            commit('eliminar', id)
         }
     },
     modules: {
