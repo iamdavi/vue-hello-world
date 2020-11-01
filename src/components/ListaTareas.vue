@@ -18,7 +18,18 @@
                 <td>{{ item.estado }}</td>
                 <td>{{ item.numero }}</td>
                 <td>
-                    <button 
+                    <router-link
+                        class="btn btn-warning btn-sm mr-3"
+                        :to="{
+                            name: 'EditarTarea',
+                            params: {
+                                id: item.id
+                            }
+                        }"
+                    >
+                        Editar
+                    </router-link>
+                    <button
                         class="btn btn-danger btn-sm" 
                         @click="deleteTarea(item.id)"
                     >
@@ -35,10 +46,6 @@ import { mapState, mapActions } from "vuex";
 
 export default {
     name: 'ListaTareas',
-    data () {
-        return {
-        }
-    },
     computed: {
         ...mapState(['tareas'])
     },
